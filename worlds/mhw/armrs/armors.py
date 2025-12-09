@@ -44,7 +44,7 @@ armor_sets_by_rarity = {
     }
 }
 
-ARMOR_SUFFIXES = ["Head", "Chest", "Hands", "Wrist", "Legs"]
+ARMOR_SUFFIXES = ["Helm", "Mail", "Vambrace", "Coil", "Greaves"]
 armors_by_rarity = {}
 for rarity, items in armor_sets_by_rarity.items():
     new_items = {}
