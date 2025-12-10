@@ -115,24 +115,6 @@ item_table = {
     **armors
 }
 
-item_name_groups = {
-    "Dual Blades": {name for name in dual_blades.values()},
-    "Greatsword": {name for name in great_swords.values()},
-    "Longsword": {name for name in long_swords.values()},
-    "Sword and Shield": {name for name in swordandshields.values()},
-    "Gun Lance": {name for name in gunlances.values()},
-    "Bow": {name for name in bows.values()},
-    "Hammer": {name for name in hammers.values()},
-    "Hunting Horn": {name for name in hunting_horns.values()},
-    "Lance": {name for name in lances.values()},
-    "Switch Axe": {name for name in switch_axes.values()},
-    "Charge Blade": {name for name in charge_blades.values()},
-    "Heavy Bowgun": {name for name in heavy_bowguns.values()},
-    "Light Bowgun": {name for name in light_bowguns.values()},
-    "Insect Glaive": {name for name in insect_glaives.values()},
-    "Armors": {name for name in armors.values()},
-}
-
 
 def combine_by_rarity(*dicts):
     combined = {}
@@ -151,3 +133,25 @@ weapons_by_rarity = combine_by_rarity(
     bows_by_rarity, hammers_by_rarity, hunting_horns_by_rarity, lances_by_rarity, switch_axes_by_rarity,
     charge_blades_by_rarity, heavy_bowguns_by_rarity, light_bowguns_by_rarity, insect_glaives_by_rarity
 )
+
+item_name_groups = {
+    "Dual Blades": {name for name in dual_blades.values()},
+    "Greatsword": {name for name in great_swords.values()},
+    "Longsword": {name for name in long_swords.values()},
+    "Sword and Shield": {name for name in swordandshields.values()},
+    "Gun Lance": {name for name in gunlances.values()},
+    "Bow": {name for name in bows.values()},
+    "Hammer": {name for name in hammers.values()},
+    "Hunting Horn": {name for name in hunting_horns.values()},
+    "Lance": {name for name in lances.values()},
+    "Switch Axe": {name for name in switch_axes.values()},
+    "Charge Blade": {name for name in charge_blades.values()},
+    "Heavy Bowgun": {name for name in heavy_bowguns.values()},
+    "Light Bowgun": {name for name in light_bowguns.values()},
+    "Insect Glaive": {name for name in insect_glaives.values()},
+    "Rarity 1": {name for name in weapons_by_rarity[0].values()},
+    "Rarity 2": {name for name in weapons_by_rarity[1].values()},
+    "Rarity 3": {name for name in weapons_by_rarity[2].values()},
+    "Rarity 4": {name for name in weapons_by_rarity[3].values()},
+    "Armors": {name for name in armors.values()},
+}

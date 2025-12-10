@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(GS,-SnS,-DB)
 swordandshields_by_rarity = {
     0: {
-        get_id(10): "Hunter's Knife I",
+#        get_id(10): "Hunter's Knife I",
         get_id(11): "Hunter's Knife II",
         get_id(46): "Bone Kukri I",
         get_id(47): "Bone Kukri II",

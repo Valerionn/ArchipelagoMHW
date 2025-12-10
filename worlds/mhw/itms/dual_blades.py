@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(GS,-SnS,-DB)
 dual_blades_by_rarity = {
     0: {
-        get_id(10): "Matched Slicers I",
+#        get_id(10): "Matched Slicers I",
         get_id(11): "Matched Slicers II",
         get_id(40): "Bone Hatchets I",
         get_id(41): "Bone Hatchets II",

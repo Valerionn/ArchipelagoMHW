@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(SA,-CB)
 charge_blades_by_rarity = {
     0: {
-        get_id(10): "Proto Commission Axe I",
+#        get_id(10): "Proto Commission Axe I",
         get_id(11): "Proto Commission Axe II",
         get_id(39): "Bone Strongarm I",
         get_id(40): "Bone Strongarm II",
@@ -43,5 +43,5 @@ charge_blades_by_rarity = {
         get_id(69): "Pulsar Strongarm III",
         get_id(73): "Garon Strongarm I",
         get_id(78): "Dragonbone Cutter II",
-    }
+    },
 }

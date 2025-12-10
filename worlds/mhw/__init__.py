@@ -1,9 +1,12 @@
 ﻿import math
+import os.path
+from typing import Mapping, Any
 
 from BaseClasses import ItemClassification
 from worlds.AutoWorld import World
 from worlds.generic.Rules import set_rule
 from .armrs.armors import armor_sets_by_rarity, armors_by_rarity
+from .containers import MhwContainer
 from .items import item_table, item_name_groups, MhwItem, weapons_by_rarity
 from .itms.bow import bows_by_rarity
 from .itms.dual_blades import dual_blades_by_rarity
@@ -32,12 +35,11 @@ class MhwWorld(World):
 
     location_name_groups = location_name_groups
     item_name_groups = item_name_groups
-
-    relevant_items_for_rarity = {}
+    randomizer_seed = 0
 
 
     def generate_early(self) -> None:
-        relevant_items_per_rarity = {}
+        self.randomizer_seed = self.random.getrandbits(32)
 
     def create_regions(self) -> None:
         create_regions(self)
@@ -75,13 +77,13 @@ class MhwWorld(World):
         weight_sum = 0
         weight_by_rarity = {}
         for rarity in range(4):
-            weight = math.pow(1 + rarity, -1.05)
+            weight = 4 - rarity
             weight_sum += weight
             weight_by_rarity[rarity] = weight
 
         # Add weapons
         items_needed = total_locations - len(item_pool)
-        additional_weapons_needed = math.ceil(items_needed / 4.0)
+        additional_weapons_needed = math.ceil(items_needed / 3.0)
         additional_weapons_added = 0
 
         while additional_weapons_added < additional_weapons_needed:
@@ -116,3 +118,22 @@ class MhwWorld(World):
         set_rule(self.multiworld.get_entrance("Three Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[1].values()))
         set_rule(self.multiworld.get_entrance("Four Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[2].values()))
         set_rule(self.multiworld.get_entrance("Five Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[3].values()))
+    def generate_output(self, output_directory: str) -> None:
+        content = (
+            f"Seed: {self.randomizer_seed}\n"
+            "Settings: gYHAAIAAAAAAAAAAIA==:AABkAGQAYQA4AA==\n"
+        )
+
+        # We have to conform to the factorio naming scheme, otherwise the website is unhappy
+        mod_name = f"AP-{self.multiworld.seed_name}-P{self.player}-{self.multiworld.get_file_safe_player_name(self.player)}"
+        mod_dir = os.path.join(output_directory, mod_name)
+        container = MhwContainer(
+            mod_dir,
+            output_directory,
+            self.player,
+            self.multiworld.get_file_safe_player_name(self.player),
+            content)
+        container.write()
+
+    def fill_slot_data(self) -> Mapping[str, Any]:
+        return self.options.as_dict("death_link")

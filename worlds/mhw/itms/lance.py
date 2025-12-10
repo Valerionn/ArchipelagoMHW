@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(Lance,-Gunlance)
 lances_by_rarity = {
     0: {
-        get_id(10): "Iron Lance I",
+#        get_id(10): "Iron Lance I",
         get_id(11): "Iron Lance II",
         get_id(44): "Bone Lance I",
         get_id(45): "Bone Lance II",

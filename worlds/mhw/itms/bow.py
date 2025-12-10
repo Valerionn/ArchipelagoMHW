@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(Bow,-LBG,-HBG)
 bows_by_rarity = {
     0: {
-        get_id(20): "Iron Bow I",
+#        get_id(20): "Iron Bow I",
         get_id(21): "Iron Bow II",
         get_id(58): "Hunter's Bow I",
         get_id(59): "Hunter's Bow II",

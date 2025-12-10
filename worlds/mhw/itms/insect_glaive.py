@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://mhw.poedb.tw/eng/wp_weapon
 insect_glaives_by_rarity = {
     0: {
-        get_id(10): "Iron Blade I",
+ #       get_id(10): "Iron Blade I",
         get_id(11): "Iron Blade II",
         get_id(48): "Bone Rod I",
         get_id(49): "Bone Rod II",

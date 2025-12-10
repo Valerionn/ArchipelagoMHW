@@ -9,11 +9,10 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(GS,-SnS,-DB)
 great_swords_by_rarity = {
     0: {
-        get_id(10): "Buster Sword I",
+#        get_id(10): "Buster Sword I",
         get_id(11): "Buster Sword II",
         get_id(49): "Bone Blade I",
         get_id(50): "Bone Blade II",
-
     },
     1: {
         get_id(12): "Buster Sword III",

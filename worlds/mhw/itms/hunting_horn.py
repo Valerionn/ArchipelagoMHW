@@ -9,7 +9,7 @@ def get_id(base_id):
 # https://github.com/Ezekial711/MonsterHunterWorldModding/wiki/Weapon-ID-Dump-(Longsword,-Hammer,-Hunting-Horn)
 hunting_horns_by_rarity = {
     0: {
-        get_id(10): "Metal Bagpipe I",
+#        get_id(10): "Metal Bagpipe I",
         get_id(11): "Metal Bagpipe II",
         get_id(45): "Bone Horn I",
         get_id(46): "Bone Horn II",
