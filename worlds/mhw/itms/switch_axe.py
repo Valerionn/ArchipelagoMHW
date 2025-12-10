@@ -48,12 +48,12 @@ switch_axes_by_rarity = {
     },
     4: {
         get_id(15): "Improved Steel Axe III",
-        get_id(54): "Glacial Axe II",
         get_id(22): "Lightning Chopper I",
         get_id(30): "Jagras Raider I",
         get_id(34): "Rathalos Axe II",
         get_id(43): "Bone Smasher III",
         get_id(50): "Lumu Smasher I",
+        get_id(54): "Glacial Axe II",
         get_id(60): "Jyura Drought I",
         get_id(68): "Barroth Grinder I",
         get_id(72): "Diablos Axe II",
@@ -66,7 +66,6 @@ switch_axes_by_rarity = {
         get_id(23): "Lightning Chopper II",
         get_id(24): "Lightning Chopper III",
         get_id(25): "Motor Chopper I",
-        get_id(26): "Motor Chopper II",
         get_id(31): "Jagras Raider II",
         get_id(32): "Jagras Raider III",
         get_id(35): "Rathbringer Axe I",
@@ -98,6 +97,7 @@ switch_axes_by_rarity = {
     },
     6: {
         get_id(18): "Nergal Gash",
+        get_id(26): "Motor Chopper II",
         get_id(36): "Rathbringer Axe II",
         get_id(46): "Hazak Demios I",
         get_id(47): "Hazak Demios II",
@@ -142,5 +142,5 @@ switch_axes_by_rarity = {
         get_id(137): "Kjarr Axe Thunder",
         get_id(138): "Kjarr Axe Water",
         get_id(139): "Kjarr Axe Paralysis",
-    }
+    },
 }
