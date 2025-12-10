@@ -2,7 +2,7 @@
 import os.path
 from typing import Mapping, Any
 
-from BaseClasses import ItemClassification
+from BaseClasses import ItemClassification, Item
 from worlds.AutoWorld import World
 from worlds.generic.Rules import set_rule
 from .armrs.armors import armor_sets_by_rarity, armors_by_rarity
@@ -10,6 +10,7 @@ from .containers import MhwContainer
 from .items import item_table, item_name_groups, MhwItem, weapons_by_rarity
 from .itms.bow import bows_by_rarity
 from .itms.dual_blades import dual_blades_by_rarity
+from .itms.filler import filler_items
 from .itms.greatsword import great_swords_by_rarity
 from .itms.gunlance import gunlance_by_rarity
 from .itms.longsword import long_swords_by_rarity
@@ -36,7 +37,7 @@ class MhwWorld(World):
     location_name_groups = location_name_groups
     item_name_groups = item_name_groups
     randomizer_seed = 0
-
+    max_rarity = 8
 
     def generate_early(self) -> None:
         self.randomizer_seed = self.random.getrandbits(32)
@@ -57,12 +58,16 @@ class MhwWorld(World):
                 return r
         return 0
 
+    def create_filler(self) -> "Item":
+        filler_id, filler_name = self.random.choice(list(filler_items.items()))
+        return MhwItem(filler_name, ItemClassification.filler, filler_id, self.player)
+
     def create_items(self) -> None:
         used_items = set()
         total_locations = len(self.multiworld.get_unfilled_locations(self.player))
         item_pool = []
         # Necessary progression items - at least 1 weapon per rarity, and at least 1 armor piece per rarity
-        for rarity in range(4):
+        for rarity in range(self.max_rarity):
             weapon_id, weapon_name = self.random.choice(list(weapons_by_rarity[rarity].items()))
             used_items.add(weapon_name)
             item_pool.append(MhwItem(weapon_name, ItemClassification.progression, weapon_id, self.player))
@@ -73,11 +78,15 @@ class MhwWorld(World):
                 used_items.add(armor_name)
                 item_pool.append(MhwItem(armor_name, ItemClassification.progression, armor_id, self.player))
 
+        # Add filler items - at least enough for our own excluded locations
+        for _ in range(75):
+            item_pool.append(self.create_filler())
+
         # Weight that favors lower rarity equipment
         weight_sum = 0
         weight_by_rarity = {}
-        for rarity in range(4):
-            weight = 4 - rarity
+        for rarity in range(self.max_rarity):
+            weight = self.max_rarity - rarity
             weight_sum += weight
             weight_by_rarity[rarity] = weight
 
@@ -114,10 +123,21 @@ class MhwWorld(World):
 
         self.multiworld.itempool += item_pool
 
+    def has_rarity_weapon(self, state, rarity: int):
+        # Higher rarity weapons would be okay too, but we want to encourage the randomizer to not drop a rarity 8 weapon immediately
+        return any(state.has(item, self.player) for item in weapons_by_rarity[rarity].values())
+
     def set_rules(self) -> None:
-        set_rule(self.multiworld.get_entrance("Three Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[1].values()))
-        set_rule(self.multiworld.get_entrance("Four Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[2].values()))
-        set_rule(self.multiworld.get_entrance("Five Stars", self.player), lambda state: any(state.has(item, self.player) for item in weapons_by_rarity[3].values()))
+        # Low Rank - up to rarity 4 weapons (0-indexed)
+        set_rule(self.multiworld.get_entrance("3 Stars", self.player), lambda state: self.has_rarity_weapon(state, 1))
+        set_rule(self.multiworld.get_entrance("4 Stars", self.player), lambda state: self.has_rarity_weapon(state, 2))
+        set_rule(self.multiworld.get_entrance("5 Stars", self.player), lambda state: self.has_rarity_weapon(state, 3))
+        # High Rank - up to rarity 8 weapons (0-indexed)
+        set_rule(self.multiworld.get_entrance("6 Stars", self.player), lambda state: self.has_rarity_weapon(state, 4))
+        set_rule(self.multiworld.get_entrance("7 Stars", self.player), lambda state: self.has_rarity_weapon(state, 5))
+        set_rule(self.multiworld.get_entrance("8 Stars", self.player), lambda state: self.has_rarity_weapon(state, 6))
+        set_rule(self.multiworld.get_entrance("9 Stars", self.player), lambda state: self.has_rarity_weapon(state, 7))
+
     def generate_output(self, output_directory: str) -> None:
         content = (
             f"Seed: {self.randomizer_seed}\n"

@@ -15,6 +15,7 @@ from .itms.light_bowgun import light_bowguns_by_rarity
 from .itms.longsword import long_swords_by_rarity
 from .itms.switch_axe import switch_axes_by_rarity
 from .itms.swordandshield import swordandshields_by_rarity
+from .itms.filler import filler_items
 
 
 class MhwItem(Item):
@@ -112,7 +113,8 @@ item_table = {
     **heavy_bowguns,
     **light_bowguns,
     **insect_glaives,
-    **armors
+    **armors,
+    **filler_items,
 }
 
 
@@ -153,5 +155,10 @@ item_name_groups = {
     "Rarity 2": {name for name in weapons_by_rarity[1].values()},
     "Rarity 3": {name for name in weapons_by_rarity[2].values()},
     "Rarity 4": {name for name in weapons_by_rarity[3].values()},
+    "Rarity 5": {name for name in weapons_by_rarity[4].values()},
+    "Rarity 6": {name for name in weapons_by_rarity[5].values()},
+    "Rarity 7": {name for name in weapons_by_rarity[6].values()},
+    "Rarity 8": {name for name in weapons_by_rarity[7].values()},
     "Armors": {name for name in armors.values()},
+    "Filler Items": {name for name in filler_items.values()},
 }

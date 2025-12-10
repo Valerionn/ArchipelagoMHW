@@ -1,12 +1,17 @@
 ﻿from . import MhwGameOptions
 from .xorshift128 import XorShift128Generator
 
-
 # This follows the implementation of the MHW Randomizer
 low_rank_monsters = [0, 1, 7, 9, 12, 14, 21, 24, 27, 28, 29, 30, 31, 32, 33, 34, 35]
-into_bowels_vale_monsters  = [0, 1, 7, 9, 12, 14, 21, 24, 27, 28, 30, 31, 32, 33, 34]
+into_bowels_vale_monsters = [0, 1, 7, 9, 12, 14, 21, 24, 27, 28, 30, 31, 32, 33, 34]
 # "Best quest ever" has fewer monsters available
 best_monsters_ever = [0, 1, 7, 12, 14, 21, 24, 27, 28, 29, 30, 31, 32, 34, 35]
+
+high_rank_monsters = [0, 1, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 28, 29, 30, 31, 32, 33,
+                      34, 35, 36, 37, 39]
+quest_803_monsters = [0, 1, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 28, 30, 31, 32, 33,
+                      34, 35, 36, 37, 39]
+
 
 class MonsterRandomizer:
     monster_chances = {}
@@ -102,7 +107,22 @@ class MonsterRandomizer:
         monster_by_quest[502] = self.handle_quest(low_rank_monsters, 2)
         monster_by_quest[503] = self.handle_quest(low_rank_monsters, 2)
 
-        # Zorah 2
+        # Zorah 2 (technically kind of high rank already)
         monster_by_quest[504] = self.handle_quest(low_rank_monsters, 1)
+
+        # High Rank
+        monster_by_quest[601] = self.handle_quest(high_rank_monsters, 3)
+        monster_by_quest[605] = self.handle_quest(high_rank_monsters, 3)
+        monster_by_quest[607] = self.handle_quest(high_rank_monsters, 3)
+        monster_by_quest[805] = self.handle_quest(high_rank_monsters, 1)
+        monster_by_quest[50701] = self.handle_quest(high_rank_monsters, 2)
+
+        # High Rank Slay Quests
+        monster_by_quest[701] = self.handle_quest(high_rank_monsters, 0)
+        monster_by_quest[801] = self.handle_quest(high_rank_monsters, 0)
+        monster_by_quest[802] = self.handle_quest(high_rank_monsters, 0)
+        monster_by_quest[803] = self.handle_quest(quest_803_monsters, 0)
+        monster_by_quest[804] = self.handle_quest(high_rank_monsters, 0)
+        monster_by_quest[806] = self.handle_quest(high_rank_monsters, 0)
 
         return monster_by_quest
