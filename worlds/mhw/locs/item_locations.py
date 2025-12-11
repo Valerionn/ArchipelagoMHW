@@ -53,7 +53,7 @@ common_items = {
         get_id(309): "Kulu-Ya-Ku Scale",
         get_id(310): "Kulu-Ya-Ku Hide",
         get_id(311): "Kulu-Ya-Ku Plume",
-        get_id(312): "Kulu-Ya-Ku Scale",
+        get_id(312): "Kulu-Ya-Ku Beak",
     },
     pukei: {
         get_id(317): "Pukei-Pukei Scale",

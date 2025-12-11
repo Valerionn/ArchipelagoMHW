@@ -13,6 +13,6 @@ filler_items = {
     get_id(24): "Armor Sphere Bundle",
     get_id(25): "Armor Sphere+ Bundle",
     get_id(26): "Advanced Armor Sphere Bundle",
-    get_id(27): "Hard Sphere Bundle",
-    get_id(28): "Heavy Sphere Bundle",
+    get_id(27): "Hard Armor Sphere Bundle",
+    get_id(28): "Heavy Armor Sphere Bundle",
 }

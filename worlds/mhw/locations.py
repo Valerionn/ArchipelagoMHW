@@ -37,7 +37,8 @@ location_name_groups = {
     "Break Items": {name for name in from_break.values()},
     "Common HR Items": {name for name in from_common_high_rank.values()},
     "Break HR Items": {name for name in from_break_high_rank.values()},
-    "Quest Items": {name for name in from_quest.values()},
+    "Story Quests": {name for name in from_story_quest.values()},
+    "Optional Quests": {name for name in from_quest.values()},
     "Gather Items": {name for name in gather_items.values()},
     "Gather HR Items": {name for name in gather_high_rank_items.values()},
 }

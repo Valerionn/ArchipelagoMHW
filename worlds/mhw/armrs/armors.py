@@ -107,7 +107,7 @@ armor_sets_by_rarity = {
         get_id(101): "Rathalos Alpha",
         get_id(102): "Rathalos Beta",
         get_id(103): "Diablos Alpha",
-        get_id(102): "Diablos Beta",
+        get_id(104): "Diablos Beta",
         get_id(119): "Brigade Alpha",
         get_id(120): "Brigade Beta",
         get_id(137): "Zorah Alpha",
@@ -154,7 +154,7 @@ armor_sets_by_rarity = {
         get_id(191): "Kulve Taroth Alpha",
         get_id(192): "Kulve Taroth Beta",
         get_id(206): "Drachen Armet Alpha",
-        get_id(207): "Drachen Armet Alpha",
+        get_id(207): "Drachen Armet Beta",
         get_id(218): "Vaal Hazak Gamma",
         get_id(219): "Kirin Gamma",
         get_id(220): "Kaiser Gamma",
@@ -165,7 +165,8 @@ armor_sets_by_rarity = {
         get_id(231): "Empress Alpha",
         get_id(232): "Empress Beta",
         get_id(253): "Empress Gamma",
-        get_id(258): "Kulve Taroth Gamma",
+        # This is broken (seems to have differnt IDs depending on the slot?)
+#        get_id(258): "Kulve Taroth Gamma",
     }
 }
 
