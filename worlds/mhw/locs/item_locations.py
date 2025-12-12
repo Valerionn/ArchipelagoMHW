@@ -158,7 +158,7 @@ common_items = {
 # Items that are usually only obtained after the player breaks a monster part or are very rare
 break_items = {
     great_jagras: {
-        get_id(304): "Great Jagras Mane (Break Head)"
+        get_id(304): "Great Jagras Mane"
     },
     anjanath: {
         get_id(356): "Anjanath Tail",
@@ -227,7 +227,7 @@ common_high_rank_items = {
         get_id(360): "Anjanath Nosebone+",
     },
     rathian: {
-        get_id(368): "Rathian Scale",
+        get_id(368): "Rathian Scale+",
         get_id(369): "Rathian Carapace",
         get_id(370): "Rathian Spike+",
     },
