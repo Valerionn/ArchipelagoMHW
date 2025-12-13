@@ -6,7 +6,7 @@ insect_glaives_weapon_category = 10
 def get_id(base_id):
     return mhw_weapon_id + insect_glaives_weapon_category * 1000 + base_id
 
-
+# Giving an insect glaive, equipping it and then hovering over a kinsect crashes the game
 # https://mhw.poedb.tw/eng/wp_weapon
 insect_glaives_by_rarity = {
     0: {

@@ -34,9 +34,9 @@ location_table = {
 
 location_name_groups = {
     "Common Items": {name for name in from_common.values()},
-    "Break Items": {name for name in from_break.values()},
+    "Rare Items": {name for name in from_break.values()},
     "Common HR Items": {name for name in from_common_high_rank.values()},
-    "Break HR Items": {name for name in from_break_high_rank.values()},
+    "Rare HR Items": {name for name in from_break_high_rank.values()},
     "Story Quests": {name for name in from_story_quest.values()},
     "Optional Quests": {name for name in from_quest.values()},
     "Gather Items": {name for name in gather_items.values()},
